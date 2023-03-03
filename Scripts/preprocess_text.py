@@ -1,11 +1,9 @@
 """
 Prepocess du dataframe
-""" 
+"""
 
 # importation des librairies
 import contractions
-import numpy as np 
-
 import nltk
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem import WordNetLemmatizer
@@ -25,13 +23,9 @@ lemmentizer = WordNetLemmatizer()
 negative_words = ['not', 'no', 'never', 'nor', 'hardly', 'barely']
 negative_prefix = "NOT_"
 
-
-# definition des fonctions de pritrement 
-
+#definition des fonctions de pritrement 
 def tokenizer_text(text):
-    """
-    fonction pour tokeniser ces textes
-    
+    """fonction pour tokeniser ces textes
     en entré nous avons un text:str
     en sortie aussi un text:str
     """
@@ -41,17 +35,14 @@ def tokenizer_text(text):
 def lemmentizer_text(text):
     """
     Fonction pour lemmentiser les mot du textes
-    en entré un text : str 
-    en sortie un text :str 
-
-
+    en entré un text : str , en sortie un text :str
     """
     token_tag = nltk.pos_tag(nltk.word_tokenize(text))
     lemmentizer_text_list = list()
     for word,tag in token_tag:
         if tag.startswith('J'):
             lemmentizer_text_list.append(lemmentizer.lemmatize(word,
-                                        'a'))#lemmentise les adjectifs 
+                                        'a'))#lemmentise les adjectifs
         elif tag.startswith('V'):
             lemmentizer_text_list.append(lemmentizer.lemmatize(word,
                                         'v'))# lemmentisation des verbs
@@ -69,7 +60,7 @@ def lemmentizer_text(text):
 
 def upper_to_lower(text):
     """
-    Cette fonction transforme tout les mots d'un 
+    Cette fonction transforme tout les mots d'un
     text en minuscule
     prend comme entrer un text
     retourne un text en miniscule
