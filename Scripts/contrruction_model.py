@@ -30,7 +30,7 @@ def contruction_model(df):
     matrix_df = pd.DataFrame(df.toarray(),columns=vectorizer.get_feature_names())
     matrix_df.index = data.index
     model_nmf = NMF(15)
-    #theme_sujet = model_nmf.fit_transform(matrix_df)
+    #model_nmf = model_nmf.fit_transform(matrix_df)
     #display_predicted_topics(model_nmf, vectorizer.get_feature_names(), 10)
     with open('/home/toffe/PROJET_FE/Topic_Modeling/Topic_Modeling/model/model.pkl','wb') as file:
         pickle.dump(model_nmf, file)
